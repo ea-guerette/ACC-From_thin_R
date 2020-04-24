@@ -1,5 +1,9 @@
 #A script (.R file) lets you save your work 
-#A script also lets you write comments on your code
+#It also lets you write comments on your code, by using #
+#to run a line of code, press ctrl+enter while the cursor is on it
+#to run several lines of code, you can highlight them with the mouse, then press ctrl+enter. 
+#You can also use the Run button
+# Tab autofills variable names, it's a handy shortcut
 
 #to install packages - they only need to be installed once, so this line can be commented out once it has been executed.
 #install.packages("openair")
@@ -70,7 +74,8 @@ plot(data = gapminder, lifeExp ~ year) #plot() uses a y ~ x formula
 
 #what if x is a categorical variable? 
 plot(data = gapminder, lifeExp ~ continent) 
-#we get a boxplot!
+#we get a boxplot! 
+#This is because whoever wrote the function thought this was the best way to display this kind of data.
 
 #we can also make histograms
 hist(gapminder_2007$gdpPercap)
