@@ -13,9 +13,9 @@ library(openair)
 gapminder <- read.csv("data/gapminder.csv") 
 
 names(gapminder) #returns column names 
-summary(gapminder) 
+summary(gapminder) #returns a summary (stats if column is numeric) for each column in the dataframe
 
-View(gapminder)
+View(gapminder) #open the dataframe as a tab in the Editor
 
 #very useful for timeseries 
 head(gapminder) #shows first 6 rows by default
@@ -56,18 +56,23 @@ gapminder$gdp <- gapminder$gdpPercap * gapminder$pop #a bit tedious to type
 within(gapminder, gdp <- gdpPercap * pop)
 
 #to save a subset of the main data, assign it to a new variable 
-AusCan <- subset(gapminder, country %in% c("Australia", "Canada"))
+AusCan <- subset(gapminder, country %in% c("Australia", "Canada")) #note the use of %in% instead of == when using a list of conditions
 gapminder_2007 <- subset(gapminder, year == 2007)
 
 
 #it's often a good idea to have a quick look at the data
 #{base} has some plotting functionality
 
-plot(data = gapminder, lifeExp ~ year)
+plot(data = gapminder, lifeExp ~ year) #plot() uses a y ~ x formula 
 
-#Q1: plot population versus continent
-plot(data = gapminder, lifeExp ~ continent)
+#Q1: plot population versus year
+#A1: plot(data = gapminder, pop ~ year)
 
+#what if x is a categorical variable? 
+plot(data = gapminder, lifeExp ~ continent) 
+#we get a boxplot!
+
+#we can also make histograms
 hist(gapminder_2007$gdpPercap)
 
 #There are many packages out there that let you make really cool plots, it's often a matter of preference which you use. 
@@ -76,6 +81,7 @@ hist(gapminder_2007$gdpPercap)
 ##We will now start to use {openair} functions 
 
 #plotting the data quickly using the scatterPlot function from {openair}
+#Note that the function names are case sensitive!
 scatterPlot(gapminder, x = "year", y = "lifeExp")
 
 #Q1: plot population versus year 
@@ -92,7 +98,7 @@ scatterPlot(gapminder, x = "year", y = "lifeExp", type = "pop")
 
 #we can plot a subset 
 subset(gapminder, country == "Australia")
-scatterPlot(gapminder, x = "year", y = "lifeExp")
+scatterPlot(subset(gapminder, country == "Australia"), x = "year", y = "lifeExp")
 
 subset(gapminder, year == 1977)
 scatterPlot(subset(gapminder, year == 1977), x = "gdpPercap", y = "lifeExp")
