@@ -1,4 +1,11 @@
 #A script (.R file) lets you save your work 
+#A script also lets you write comments on your code
+
+#to install packages - they only need to be installed once, so this line can be commented out once it has been executed.
+#install.packages("openair")
+
+#Now, load the package(s) you want to use - this needs to be done *every* time you open a new session
+library(openair)
 
 #get some data in using {base} function
 #in this case we want to import the gapminder.csv file, which is located in the "data" folder in this R project
@@ -66,12 +73,7 @@ hist(gapminder_2007$gdpPercap)
 #There are many packages out there that let you make really cool plots, it's often a matter of preference which you use. 
 #because a lot of people are interested in using openair, we will use one of their plotting functions here 
 
-#to install packages - they only need to be installed once, so this line can be commented out once it has been executed.
-install.packages("openair")
-
-#Now, load the package(s) you want to use - this needs to be done *every* time you open a new session
-library(openair)
-
+##We will now start to use {openair} functions 
 
 #plotting the data quickly using the scatterPlot function from {openair}
 scatterPlot(gapminder, x = "year", y = "lifeExp")
