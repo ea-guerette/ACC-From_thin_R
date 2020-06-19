@@ -159,3 +159,5 @@ as.data.frame(by_loc)
 
 #Mini Challenge: create a cube directly from ncvar_get commands
 
+#Remember to close the file - not critical for this example, but would lead to issues with massive files. 
+nc_close(gc)
