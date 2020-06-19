@@ -89,7 +89,6 @@ isoprene_0800_zoom <- ncvar_get(gc, "IJ_AVG_S__ISOP")[1:4,1:4,]
 #keeps all hours, but keeps only the bit of the map we are interested in 
 
 
-
 #can we keep the data in a more 'native' format - a netCDF-like structure within R
 #tbl_cube(), from dplyr - this is an experimental class, not yet optimised, and limited in scope for now
 #https://dplyr.tidyverse.org/reference/tbl_cube.html#implementation
@@ -116,5 +115,8 @@ filter(gc_cube, lon < 151)
 
 by_loc <- group_by(gc_cube, lat, lon) %>% 
 summarise( isoprene_max = max(isoprene), monoterpene_avg = mean(monoterpenes))
-
+#and then turn the results into a dataframe
 as.data.frame(by_loc)
+
+
+#Mini Challenge: create a cube directly from ncvar_get commands
