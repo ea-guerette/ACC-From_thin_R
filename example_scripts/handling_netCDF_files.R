@@ -25,14 +25,15 @@ fname <- "data/netCDF/ts20150202.nc"
 
 gc <- nc_open(fname) #gc does not contain the data, but the 'connection' to the file 
 
-print(gc) #lets us see how the file is structured 
+print(gc) #lets us see how the file is structured - read through the output in the console
+#if the file is nicely documented, you should get all the info you need to use the file in there 
 
 summary(gc$var)
 rownames(summary(gc$var)) #this is a list of all the variables included in the file - we will use this later
 
 #pulling data out:
 
-#dimensions (1D data): 
+#dimensions (usually 1D data): 
 date <- ncvar_get(gc, "date") #this is read in as a character 
 date <- as.POSIXct(ncvar_get(gc, "date")) #turns it into a date 
 
